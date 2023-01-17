@@ -1,31 +1,23 @@
 import sys
-stack = []
-li =[]
-out = []
-a = sys.stdin.readline().rstrip()
-b = list(a)
-num = 0
-for i in range(len(a)):
-    if a[i] == '<':
-        if li != []:
-            c = ''.join(li).split()
-            for x in range(len(c)):
-                for j in range(len(c[x])-1,-1,-1):
-                    print(c[x][j],end='')
-                if x < len(c)-1:
-                    print(end=' ')
-            li.clear()
-        num = 1
-    if num == 1:
-        print(a[i],end='')
-        if a[i] == '>':
-            num = 0
-    else:
-        li.append(a[i])
-if li != []:
-    c = ''.join(li).split()
-    for i in range(len(c)):
-        for j in range(len(c[i])-1,-1,-1):
-            print(c[i][j],end='')
-        if i < len(c)-1:
-            print(end=' ')
+word = list(sys.stdin.readline().rstrip())
+
+i = 0
+start = 0
+
+while i < len(word):
+    if word[i] == "<":       # 열린 괄호를 만나면
+        i += 1 
+        while word[i] != ">":      # 닫힌 괄호를 만날 때 까지
+            i += 1 
+        i += 1               # 닫힌 괄호를 만난 후 인덱스를 하나 증가시킨다
+    elif word[i].isalnum(): # 숫자나 알파벳을 만나면
+        start = i
+        while i < len(word) and word[i].isalnum():
+            i+=1
+        tmp = word[start:i] # 숫자,알파벳 범위에 있는 것들을
+        tmp.reverse()       # 뒤집는다
+        word[start:i] = tmp
+    else:                   # 괄호도 아니고 알파,숫자도 아닌것 = 공백
+        i+=1                # 그냥 증가시킨다
+
+print("".join(word))
