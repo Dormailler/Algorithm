@@ -1,4 +1,3 @@
 def solution(n):
-    n = list(str(n))
-    n = int(''.join(sorted(n,reverse = True)))
+    n = int(''.join(sorted(list(str(n)),reverse = True)))
     return n
