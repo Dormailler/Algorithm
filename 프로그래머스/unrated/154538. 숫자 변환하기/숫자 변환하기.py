@@ -5,14 +5,14 @@ def solution(x, y, n):
     stack.append(x)
     answer[x] = 1
     while stack:
-        x = stack.popleft()
-        if 0 <= x + n <= 1000000 and answer[x + n] == 0:
-            answer[x + n] = answer[x] + 1
-            stack.append(x + n)
-        if 0 <= x * 2 <= 1000000 and answer[x * 2] == 0:
-            answer[x * 2] = answer[x] + 1
-            stack.append(x * 2)
-        if 0 <= x * 3 <= 1000000 and answer[x * 3] == 0:
-            answer[x * 3] = answer[x] + 1
-            stack.append(x * 3) 
+        a = stack.popleft()
+        if a + n <= y and answer[a + n] == 0:
+            answer[a + n] = answer[a] + 1
+            stack.append(a + n)
+        if a * 2 <= y and answer[a * 2] == 0:
+            answer[a * 2] = answer[a] + 1
+            stack.append(a * 2)
+        if a * 3 <= y and answer[a * 3] == 0:
+            answer[a * 3] = answer[a] + 1
+            stack.append(a * 3) 
     return answer[y] - 1
