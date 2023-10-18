@@ -1,12 +1,8 @@
 from itertools import combinations as c
+from collections import Counter
 def solution(weights):
     answer = 0
-    dic = {}
-    for i in weights:
-        if i not in dic:
-            dic[i] = 1
-        else:
-            dic[i] += 1
+    dic = Counter(weights)
     for i in dic:
         if dic[i] > 1:
             answer += dic[i] * (dic[i]-1) // 2
