@@ -3,9 +3,7 @@ def solution(picks, minerals):
     i = 0
     answer = 0
     m = []
-    while i < len(minerals)+1:
-        if i >= (d+ir+s) * 5:
-            break
+    while i < (d+ir+s) * 5:
         num = 0
         k = 0
         for j in range(i,min(i+5,len(minerals))):
